@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace InternetShopTechnic
 {
@@ -20,7 +21,7 @@ namespace InternetShopTechnic
             InitializeComponent();
 
             ComboBoxCategory.ItemsSource = Enum.GetValues(typeof(Category));
-
+            ComboBoxCategory.SelectedItem = Category.пралки;
             this.tovar = item;
 
             // Перевірка на порожній об'єкт 
@@ -32,7 +33,7 @@ namespace InternetShopTechnic
                 texBoxValue2.Text = characteristic.here[1];
                 texBoxValue3.Text = characteristic.here[2];
                 texBoxValue4.Text = characteristic.here[3];
-
+                
                 texBoxName.Text = tovar.Name;
                 texBoxAddress.Text = tovar.Address;
                 texBoxProduced.Text = tovar.Producer;
@@ -43,8 +44,7 @@ namespace InternetShopTechnic
                 buttonTovar.Content = "Редагувати";
                 LableHeader.Content = "Редагувати товар";
             }
-
-
+            
         }
         
 
@@ -88,11 +88,58 @@ namespace InternetShopTechnic
 
 
         }
-
-
+        
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ComboBoxCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<Label> labels = new List<Label> { lable1, lable2, lable3, lable4 };
+            string[] lableCharacPralki = new string[] { "Габарити", "Вага", "Макс. швидкість", "Завантаження" };
+            string[] lableCharacHolod = new string[] { "Габарити", "Вага", "Об'єм камери", "Рівень шуму" };
+            string[] lableCharacTv = new string[] { "Габарити", "Вага", "Діагональ", "Роздільна здатність" };
+            string[] lableCharacProg = new string[] { "Габарити", "Вага", "Рік випуску", "HDMI" };
+
+           
+                switch (ComboBoxCategory.SelectedItem)
+                {
+                    case Category.пралки:
+                        for (int i = 0; i < labels.Count(); i++)
+                        {
+                            labels[i].Content = lableCharacPralki[i];
+                        }
+
+                        imageTovar.Source = new BitmapImage(new Uri("Images/washingMachine.png", UriKind.Relative));
+                        break;
+                    case Category.холодильники:
+                        for (int i = 0; i < labels.Count(); i++)
+                        {
+                            labels[i].Content = lableCharacHolod[i];
+                        }
+                        imageTovar.Source = new BitmapImage(new Uri("Images/refrigerator.png", UriKind.Relative));
+                    break;
+                    case Category.телевізори:
+                        for (int i = 0; i < labels.Count(); i++)
+                        {
+                            labels[i].Content = lableCharacTv[i];
+                        }
+                        imageTovar.Source = new BitmapImage(new Uri("Images/tv.png", UriKind.Relative));
+                    break;
+                    case Category.програвачі:
+                        for (int i = 0; i < labels.Count(); i++)
+                        {
+                            labels[i].Content = lableCharacProg[i];
+                        }
+                        imageTovar.Source = new BitmapImage(new Uri("Images/player.png", UriKind.Relative));
+                    break;
+                    default:
+                        break;
+                }
+            
+
+
         }
     }
 }

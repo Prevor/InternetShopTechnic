@@ -3,9 +3,14 @@ using InternetShopTechnic.model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using Color = System.Windows.Media.Color;
 
 namespace InternetShopTechnic
 {
@@ -20,7 +25,7 @@ namespace InternetShopTechnic
         List<Customer> customers = new List<Customer>();
         List<Tovar> tovars = new List<Tovar>();
         List<Order> orders = new List<Order>();
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -117,19 +122,19 @@ namespace InternetShopTechnic
             // Виведення на ListViewe товару
             tovarList.ItemsSource = db.Tovar.ToList();
 
-            // Виведення на ListViewe користувачів
-            var custResult = (from o in db.Orders
-                              join c in db.Customer on o.CustomerId equals c.Id
+            customerList.ItemsSource = db.Customer.ToList();
 
-                              select new
-                              {
-                                  Name = c.Name,
-                                  Address = c.Address,
-                                  Email = c.Email,
-                                  Phone = c.Phone,
-                                  Order = db.Orders.Where(q => q.CustomerId == c.Id).Count()
-                              }).Distinct();
-            customerList.ItemsSource = custResult.ToList();
+            // Виведення на ListViewe користувачів
+            //var custResult = (from o in db.Customer
+            //                 select new
+            //                 {
+            //                     Name = o.Name,
+            //                     Address = o.Address,
+            //                     Email = o.Email,
+            //                     Phone = o.Phone,
+            //                     Order = db.Orders.Where(q => q.CustomerId == o.Id).Count()
+            //                 }).Distinct();
+            //customerList.ItemsSource = custResult.ToList();
 
             // Виведення на ListViewe ордерів
             var result = from p in db.Orders
@@ -208,8 +213,8 @@ namespace InternetShopTechnic
         // Редагування даних користувача
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show($"{(Customer)customerList.SelectedItem}", "Статус замовлення");
             selCust = (Customer)customerList.SelectedItem;
-
             if (selCust != null)
             {
                 selCust.Name = textBoxName.Text;
@@ -220,6 +225,30 @@ namespace InternetShopTechnic
                 db.Customer.Update(selCust);
                 db.SaveChanges();
                 Show();
+            }
+        }
+
+        private void Button_Click_Check(object sender, RoutedEventArgs e)
+        {
+            selCust = (Customer)customerList.SelectedItem;
+            if (selCust != null)
+            {
+                var custOrder = (from o in db.Orders
+                    join c in db.Customer on o.CustomerId equals c.Id
+                    where o.Status == Status.processing || o.Status == Status.assembled
+                    select new
+                    {
+
+                    }).Any();
+
+                if (custOrder)
+                {
+                    MessageBox.Show("Є невиконані замовлення", "Статус замовлення", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Всі замовлення виконано", "Статус замовлення", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
@@ -325,11 +354,17 @@ namespace InternetShopTechnic
             var result = db.Tovar.Where(t => t.Producer == ComboBoxProducer.SelectedItem.ToString()).ToList();
             tovarList.ItemsSource = result;
         }
+        
 
         // Додавання товару
         private void Button_Click_AddTovar(object sender, RoutedEventArgs e)
         {
             TovarWindow tovarWindow = new TovarWindow(new Tovar());
+
+            tovarWindow.ComboBoxCategory.SelectedItem = Category.пралки;
+
+          
+            
 
             if (tovarWindow.ShowDialog() == true)
             {
@@ -440,16 +475,8 @@ namespace InternetShopTechnic
             {
                 MessageBox.Show("Error", "Товар не вибрано!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
-
         }
-
-        private void Button_Click_Check(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private void Button_Click_Default(object sender, RoutedEventArgs e)
         {
             tovarList.ItemsSource = db.Tovar.ToList();

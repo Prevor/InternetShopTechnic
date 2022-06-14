@@ -5,28 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InternetShopTechnic"
         mc:Ignorable="d"
-        Title="TovarWindow" Height="320" Width="450" WindowStartupLocation="CenterScreen">
+        Title="TovarWindow" Height="350" Width="500" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button Content="Закрити" HorizontalAlignment="Left" Margin="15,239,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_Close" />
-        <Button x:Name="buttonTovar" Content="Додати" HorizontalAlignment="Left" Margin="325,239,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_AddTovar"/>
+        <Button Content="Закрити" HorizontalAlignment="Left" Margin="15,272,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_Close" />
+        <Button x:Name="buttonTovar" Content="Додати" HorizontalAlignment="Left" Margin="325,272,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_AddTovar"/>
         <TextBox x:Name="texBoxName" HorizontalAlignment="Left" Margin="110,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="box"/>
         <TextBox x:Name="texBoxPrice" HorizontalAlignment="Left" Margin="110,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="box"/>
         <TextBox x:Name="texBoxProduced" HorizontalAlignment="Left" Margin="110,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="box" Cursor="Arrow"/>
         <TextBox x:Name="texBoxAddress" HorizontalAlignment="Left" Margin="110,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Tag="box" Height="25"/>
-        <Label Content="Назва" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Категорія" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Ціна" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Виробник" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Адрес збірки" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Height="26"/>
-        <Label Content="Кількість" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top"/>
-        <Label Content="Характеристики" HorizontalAlignment="Left" Margin="9,178,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Назва" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Категорія" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Ціна" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Виробник" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Адрес збірки" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Кількість" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top"/>
+        <Label Content="Характеристики" HorizontalAlignment="Left" Margin="9,203,0,0" VerticalAlignment="Top" Height="26"/>
 
-        <TextBox x:Name="texBoxValue1" HorizontalAlignment="Left" Margin="110,174,0,0" TextWrapping="Wrap" Height="25" VerticalAlignment="Top" Width="75" Tag="box" Cursor="Arrow"/>
-        <TextBox x:Name="texBoxValue2" HorizontalAlignment="Left" Margin="190,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Tag="box"/>
-        <TextBox x:Name="texBoxValue3" HorizontalAlignment="Left" Margin="270,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Tag="box"/>
-        <TextBox x:Name="texBoxValue4" HorizontalAlignment="Left" Margin="350,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" Tag="box"/>
-        <TextBox x:Name="texBoxNumber" HorizontalAlignment="Left" Margin="110,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Tag="box"/>
-        <ComboBox x:Name="ComboBoxCategory" HorizontalAlignment="Left" Margin="110,54,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
+        <TextBox x:Name="texBoxValue1" HorizontalAlignment="Left" Margin="110,199,0,0" TextWrapping="Wrap" Height="25" VerticalAlignment="Top" Width="80" Tag="box" Cursor="Arrow"/>
+        <TextBox x:Name="texBoxValue2" HorizontalAlignment="Left" Margin="195,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="box"/>
+        <TextBox x:Name="texBoxValue3" HorizontalAlignment="Left" Margin="285,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="box"/>
+        <TextBox x:Name="texBoxValue4" HorizontalAlignment="Left" Margin="385,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="box"/>
+        <TextBox x:Name="texBoxNumber" HorizontalAlignment="Left" Margin="110,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Tag="box"/>
+        <ComboBox x:Name="ComboBoxCategory" HorizontalAlignment="Left" Margin="110,54,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectionChanged="ComboBoxCategory_SelectionChanged"/>
         <Label x:Name="LableHeader" Content="Додавання товару" HorizontalAlignment="Left" Margin="145,-1,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="lable1" Content="" HorizontalAlignment="Left" Margin="110,175,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="lable2" Content="" HorizontalAlignment="Left" Margin="195,175,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="lable3" Content="" HorizontalAlignment="Left" Margin="280,175,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="lable4" Content="" HorizontalAlignment="Left" Margin="380,174,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image x:Name="imageTovar" HorizontalAlignment="Left" Height="130" Margin="280,39,0,0" VerticalAlignment="Top" Width="180"/>
+
     </Grid>
+
 </Window>
