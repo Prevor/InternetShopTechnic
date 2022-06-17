@@ -4,14 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InternetShopTechnic"
+        xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         
-        Title="Інтернет-магазин побутової техніки" Height="800" Width="1600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Icon="/electric-appliance.png">
+        Title="Інтернет-магазин побутової техніки" Height="800" Width="1600" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Icon="/electric-appliance.png" ResizeMode="NoResize" Visibility="Visible" MouseDown="Window_MouseDown" WindowStyle="None">
     <Grid>
-        <TabControl TabStripPlacement="Top">
+        <Grid VerticalAlignment="Top" ZIndex="1" Height="40">
+            <TextBlock Text="Інтернет-магазин побутової техніки" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+            <Button Margin="4" HorizontalAlignment="Right" VerticalAlignment="Center" Click="CloseMainWindow" Cursor="Hand" >
+                <materialDesign:PackIcon Kind="close" Visibility="Visible"/>
+            </Button>
+        </Grid>
+        <dragablz:TabablzControl>
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController/>
+            </dragablz:TabablzControl.InterTabController>
             <TabItem Header="Товар" Height="50" Width="150">
                 <Grid Background="#FFE5E5E5">
-                    <ListView Name="tovarList" Margin="150,0,0,0" SelectionChanged="tovarList_SelectionChanged" FontFamily="Arial" FontSize="14">
+                    <ListView Name="tovarList"  Margin="150,0,0,0" SelectionChanged="tovarList_SelectionChanged" FontFamily="Arial" FontSize="16" FontWeight="Normal"  Background="White">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Назва</GridViewColumn>
@@ -25,7 +36,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <GroupBox Header="Сортування" Margin="7,19,0,0" HorizontalAlignment="Left" Width="135" Height="235" VerticalAlignment="Top" BorderBrush="#FFF10B0B">
+                    <GroupBox Header="Сортування" Margin="7,6,0,0" HorizontalAlignment="Left" Width="135" Height="265" VerticalAlignment="Top" BorderBrush="#FFF10B0B" FontWeight="Bold">
                         <StackPanel>
                             <Label Content="Категорія" Width="123"></Label>
                             <ComboBox x:Name="ComboBoxCategory" HorizontalAlignment="Left" Width="123" SelectionChanged="ComboBoxCategory_SelectionChanged"/>
@@ -33,64 +44,54 @@
                             <ComboBox x:Name="ComboBoxProducer" HorizontalAlignment="Left" Width="123" SelectionChanged="ComboBoxProducer_SelectionProducer"/>
                             <Label Content="Характеристики"></Label>
                             <ComboBox x:Name="ComboBoxCharacteristics" HorizontalAlignment="Left" Width="123" SelectionChanged="ComboBoxProducer_SelectionCharacteristics"/>
-                            <Button Content="Cкинути" Margin="0,10,0,1" Width="123" Height="25" Click="Button_Click_Default"/>
+                            <CheckBox x:Name="CheckBoxAvailable"  Margin="0,5,0,0" Content="В наявності" Click="CheckBoxAvailable_Click"></CheckBox>
+                            <Button Margin="0,10,0,0" Content="Cкинути" Width="114" Height="30" Click="Button_Click_Default"/>
                         </StackPanel>
                     </GroupBox>
 
-                    <GroupBox Header="Характеристики" Margin="7,260,0,0" HorizontalAlignment="Left" Width="135" Height="254" VerticalAlignment="Top" BorderBrush="#FF06BF00">
+                    <GroupBox Header="Характеристики" Margin="7,275,0,0" HorizontalAlignment="Left" Width="135" Height="254" VerticalAlignment="Top" BorderBrush="#FF06BF00" FontWeight="Bold" FontStyle="Normal">
                         <StackPanel>
                             <Label x:Name="lable1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="Characteristic1" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="Characteristic1" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Cursor="Arrow"/>
                             <Label x:Name="lable2" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="Characteristic2" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="Characteristic2" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Cursor="Arrow"/>
                             <Label x:Name="lable3" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="Characteristic3" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="Characteristic3" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Cursor="Arrow"/>
                             <Label x:Name="lable4" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-                            <TextBox x:Name="Characteristic4" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="Characteristic4" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True" Cursor="Arrow"/>
                         </StackPanel>
                     </GroupBox>
-                    <Button Content="Додати товар" HorizontalAlignment="Left" Margin="7,584,0,0" VerticalAlignment="Top" Width="138" Height="30" Click="Button_Click_AddTovar" Cursor="Hand"/>
-                    <Button Content="Редагувати" HorizontalAlignment="Left" Margin="7,624,0,0" VerticalAlignment="Top" Width="138" Height="30" Click="Button_Click_EditTovar"/>
-                    <Button Content="Видалити товар" HorizontalAlignment="Left" Margin="7,664,0,0" VerticalAlignment="Top" Width="138" Height="30" Click="Button_Click_RemoveTovar"/>
-                    <Button HorizontalAlignment="Left" Margin="7,524,0,0" VerticalAlignment="Top" Width="138" Height="50" Click="Button_Click_Order">
+                    <Button Content="Додати товар" HorizontalAlignment="Left" Margin="7,599,0,0" VerticalAlignment="Top" Width="138" Height="30" Click="Button_Click_AddTovar" Cursor="Hand"/>
+                    <Button Content="Редагувати" HorizontalAlignment="Left" Margin="7,639,0,0" VerticalAlignment="Top" Width="138" Height="30" Click="Button_Click_EditTovar"/>
+                    <Button Content="Видалити товар" HorizontalAlignment="Left" Margin="7,679,0,0" VerticalAlignment="Top" Width="138" Height="30" Click="Button_Click_RemoveTovar"/>
+                    <Button HorizontalAlignment="Left" Margin="7,539,0,0" VerticalAlignment="Top" Width="138" Height="50" Click="Button_Click_Order" Cursor="Hand">
                         <TextBlock TextAlignment="Center" TextWrapping="Wrap">Оформити замовлення</TextBlock>
                     </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Клієнти"  Height="50" Width="150">
                 <Grid Background="#FFE5E5E5">
-
-                    <ListView Name="customerList" Margin="150,0,0,0" Grid.Column="1" FontSize="14" FontFamily="Arial">
+                    <ListView Name="customerList" Margin="150,0,0,0" Grid.Column="16" FontSize="16" FontFamily="Arial" SelectionMode="Single">
                         <ListView.View >
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">ПІБ</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Address}">Адреса</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Phone}">Телефон</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Email}">Email</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Order}">Замовлень</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button Content="Додати" HorizontalAlignment="Left" Margin="7,256,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Add"/>
-                    <Button Content="Видалити" HorizontalAlignment="Left" Margin="7,334,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Remove"/>
-                    <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Margin="7,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
-                    <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Margin="7,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
-                    <TextBox x:Name="textBoxPhone" HorizontalAlignment="Left" Margin="7,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
-                    <TextBox x:Name="textBoxEmail" HorizontalAlignment="Left" Margin="7,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
-                    <Label Content="Прізвище та ім'я" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" Width="105"/>
-                    <Label Content="Адреса" HorizontalAlignment="Left" Margin="43,105,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Телефон" HorizontalAlignment="Left" Margin="40,150,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Email" HorizontalAlignment="Left" Margin="51,195,0,0" VerticalAlignment="Top" Width="39"/>
-                    <Button Content="Редагувати" HorizontalAlignment="Left" Margin="7,294,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Edit"/>
-                    <Button HorizontalAlignment="Left" Margin="5,384,0,0" VerticalAlignment="Top" Width="135" Height="50" Click="Button_Click_Check" >
-                        <TextBlock TextWrapping="Wrap" TextAlignment="Center">Перевірка статусу</TextBlock>
+                    <Button Content="Додати" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Add"/>
+                    <Button Content="Видалити" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Remove"/>
+                    <Button Content="Редагувати" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Edit"/>
+                    <Button HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="130" Height="70" Click="Button_Click_Check" >
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center">Перевірка статусу замовлень</TextBlock>
                     </Button>
                 </Grid>
             </TabItem>
-
-            <TabItem Header="Замовлення"  Height="50" Width="150">
+            <TabItem Header="Замовлення"  Height="50" Width="150" FontSize="16">
                 <Grid Background="#FFE5E5E5">
-                    <ListView Name="orderList" FontFamily="Arial" FontSize="14">
+                    <ListView Name="orderList" FontFamily="Arial" FontSize="16">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Date}">Дата і час</GridViewColumn>
@@ -105,6 +106,7 @@
                     </ListView>
                 </Grid>
             </TabItem>
-        </TabControl>
+
+        </dragablz:TabablzControl>
     </Grid>
 </Window>

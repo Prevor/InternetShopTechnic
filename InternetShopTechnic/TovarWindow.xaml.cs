@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -25,7 +26,7 @@ namespace InternetShopTechnic
             this.tovar = item;
 
             // Перевірка на порожній об'єкт 
-            if (tovar.Id != 0)
+            if (tovar != null && tovar.Characteristics != null)
             {
                 var characteristic = tovar.GetCharacteristics();
 
@@ -39,15 +40,15 @@ namespace InternetShopTechnic
                 texBoxProduced.Text = tovar.Producer;
                 texBoxPrice.Text = tovar.Price.ToString();
                 ComboBoxCategory.SelectedValue = tovar.Category;
+                ComboBoxCategory.IsEnabled = false;
                 texBoxNumber.Text = tovar.Number.ToString();
-
+                
                 buttonTovar.Content = "Редагувати";
                 LableHeader.Content = "Редагувати товар";
             }
             
         }
         
-
         public static IEnumerable<T> FindVisualChilds<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj == null) yield return (T)Enumerable.Empty<T>();
@@ -79,14 +80,11 @@ namespace InternetShopTechnic
                 this.tovar.Number = Convert.ToInt32(texBoxNumber.Text);
                 this.DialogResult = true;
                 this.Close();
-
             }
             else
             {
-                MessageBox.Show("Error", "");
+                MessageBox.Show("Поля порожні!", "Помилка");
             }
-
-
         }
         
         private void Button_Click_Close(object sender, RoutedEventArgs e)
@@ -94,12 +92,34 @@ namespace InternetShopTechnic
             this.Close();
         }
 
+        // Метод валідації text_box
+        private bool Validate(Regex reg, string st)
+        {
+            return reg.IsMatch(st);
+        }
+
+        public void validateBox(Regex reg, TextBox tb, string st, Button bt)
+        {
+            if (Validate(reg,st))
+            {
+                tb.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 130, 0));
+                tb.BorderThickness = new Thickness(0, 0, 0, 3);
+                bt.IsEnabled = true;
+            }
+            else
+            {
+                tb.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                tb.BorderThickness = new Thickness(0, 0, 0, 3);
+                bt.IsEnabled = false;
+            }
+        }
+
         private void ComboBoxCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<Label> labels = new List<Label> { lable1, lable2, lable3, lable4 };
             string[] lableCharacPralki = new string[] { "Габарити", "Вага", "Макс. швидкість", "Завантаження" };
             string[] lableCharacHolod = new string[] { "Габарити", "Вага", "Об'єм камери", "Рівень шуму" };
-            string[] lableCharacTv = new string[] { "Габарити", "Вага", "Діагональ", "Роздільна здатність" };
+            string[] lableCharacTv = new string[] { "Габарити", "Вага", "Діагональ", "Рік випуску" };
             string[] lableCharacProg = new string[] { "Габарити", "Вага", "Рік випуску", "HDMI" };
 
            
@@ -135,11 +155,53 @@ namespace InternetShopTechnic
                         imageTovar.Source = new BitmapImage(new Uri("Images/player.png", UriKind.Relative));
                     break;
                     default:
-                        break;
+                        break; 
                 }
-            
+        }
+        
+        private void texBoxName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^[A-Z a-z \W \- 0-9]{2,15}$"), texBoxName, texBoxName.Text, buttonTovar);
+        }
 
+        private void texBoxPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^\d{4,5}(\,\d{1,2})?$"), texBoxPrice, texBoxPrice.Text, buttonTovar);
+        }
 
+        private void texBoxProduced_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^[A-Za-z]{2,15}$"), texBoxProduced, texBoxProduced.Text, buttonTovar);
+        }
+
+        private void texBoxAddress_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^[A-Z \W a-z]{2,20}$"), texBoxAddress, texBoxAddress.Text, buttonTovar);
+        }
+
+        private void texBoxValue1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^[0-9x]{5,11}$"), texBoxValue1, texBoxValue1.Text, buttonTovar);
+        }
+
+        private void texBoxValue2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^[0-9]{1,4}$"), texBoxValue2, texBoxValue2.Text, buttonTovar);
+        }
+
+        private void texBoxValue3_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^[0-9]{1,4}$"), texBoxValue3, texBoxValue3.Text, buttonTovar);
+        }
+
+        private void texBoxValue4_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^[0-9x]{2,9}$"), texBoxValue4, texBoxValue4.Text, buttonTovar);
+        }
+
+        private void texBoxNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            validateBox(new Regex(@"^[0-9]{1,2}$"), texBoxNumber, texBoxNumber.Text, buttonTovar);
         }
     }
 }

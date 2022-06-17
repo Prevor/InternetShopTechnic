@@ -6,25 +6,25 @@
         xmlns:local="clr-namespace:InternetShopTechnic"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="InternetShopTechnic.OrderWindow"
         mc:Ignorable="d"
-        Title="OrderWindow" Height="400" Width="350" WindowStartupLocation="CenterScreen">
+        Title="OrderWindow" Height="375" Width="325" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <DatePicker x:Name="DateToOrder" HorizontalAlignment="Left" Margin="145,230,0,0" VerticalAlignment="Top" Width="140"/>
-        <Label Content="Дата і час" HorizontalAlignment="Left" Margin="50,34,0,0" VerticalAlignment="Top"/>
-        <Label Content="Клієнт" HorizontalAlignment="Left" Margin="50,63,0,0" VerticalAlignment="Top"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="51,99,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="DataEndTime"  IsEnabled="False" HorizontalAlignment="Left" Margin="145,35,0,0" VerticalAlignment="Top" Width="140"/>
-        <Label Content="Товар" HorizontalAlignment="Left" Margin="50,89,0,0" VerticalAlignment="Top"/>
-        <Label Content="Кількість" HorizontalAlignment="Left" Margin="50,133,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Margin="145,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
-        <Label Content="Загальна ціна" HorizontalAlignment="Left" Margin="50,163,0,0" VerticalAlignment="Top"/>
-        <Label Content="Адреса" HorizontalAlignment="Left" Margin="50,194,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Margin="145,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
-        <Label Content="Дата і час &#xA;доставки" HorizontalAlignment="Left" Margin="50,219,0,0" VerticalAlignment="Top" Width="90" Height="55"/>
-        <Button x:Name="buttonToOrder" Content="Оформити замовлення" HorizontalAlignment="Left" Margin="90,274,0,0" VerticalAlignment="Top" Width="185" Height="30"  IsCancel="True" Cursor="Hand"/>
-        <Button x:Name="buttonClose" Content="Закрити" HorizontalAlignment="Left" Margin="90,314,0,0" VerticalAlignment="Top" Width="185" Height="30" Click="Button_Click_Close" Cursor="Hand"/>
-        <Label Content="Оформлення замовлення" HorizontalAlignment="Left" Margin="65,1,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="textBoxTovar" HorizontalAlignment="Left" Margin="145,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" IsEnabled="False"/>
-        <TextBox x:Name="textBoxNumber" HorizontalAlignment="Left" Margin="145,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.545,0.559"/>
-        <ComboBox x:Name="ComboBoxCustomer" HorizontalAlignment="Left" Margin="145,67,0,0" VerticalAlignment="Top" Width="140"/>
+        <DatePicker x:Name="DateToOrder" HorizontalAlignment="Left" Margin="140,235,0,0" VerticalAlignment="Top" Width="140" CalendarClosed="DateToOrder_CalendarClosed"/>
+        <Label Content="Дата і час" HorizontalAlignment="Left" Margin="45,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Клієнт" HorizontalAlignment="Left" Margin="45,68,0,0" VerticalAlignment="Top"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DataEndTime"  IsEnabled="False" HorizontalAlignment="Left" Margin="140,40,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label Content="Товар" HorizontalAlignment="Left" Margin="45,94,0,0" VerticalAlignment="Top"/>
+        <Label Content="Кількість" HorizontalAlignment="Left" Margin="45,138,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Margin="140,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" TextChanged="TextBoxPrice_TextChanged"/>
+        <Label Content="Загальна ціна" HorizontalAlignment="Left" Margin="45,168,0,0" VerticalAlignment="Top"/>
+        <Label Content="Адреса" HorizontalAlignment="Left" Margin="45,199,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Margin="140,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" TextChanged="textBoxAddress_TextChanged" Cursor="Arrow"/>
+        <Label Content="Дата і час &#xA;доставки" HorizontalAlignment="Left" Margin="45,224,0,0" VerticalAlignment="Top" Width="90" Height="55"/>
+        <Button x:Name="buttonToOrder" Content="Оформити замовлення" HorizontalAlignment="Center" Margin="0,278,0,0" VerticalAlignment="Top" Width="185" Height="30" Cursor="Hand" Click="buttonToOrder_Click"/>
+        <Button x:Name="buttonClose" Content="Закрити" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Width="185" Height="30" Click="Button_Click_Close" Cursor="Hand"/>
+        <Label Content="Оформлення замовлення" HorizontalAlignment="Left" Margin="65,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="textBoxTovar" HorizontalAlignment="Left" Margin="140,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" IsEnabled="False"/>
+        <TextBox x:Name="textBoxNumber" HorizontalAlignment="Left" Margin="140,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.545,0.559" TextChanged="textBoxNumber_TextChanged"/>
+        <ComboBox x:Name="ComboBoxCustomer" HorizontalAlignment="Left" Margin="140,72,0,0" VerticalAlignment="Top" Width="140" SelectionChanged="ComboBoxCustomer_SelectionChanged"/>
     </Grid>
 </Window>

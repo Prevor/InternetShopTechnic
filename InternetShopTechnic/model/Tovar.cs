@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 
 namespace InternetShopTechnic.model
@@ -38,7 +35,7 @@ namespace InternetShopTechnic.model
                 {
                     Available = false;
                 }
-                  
+
             }
             get { return number; }
         }

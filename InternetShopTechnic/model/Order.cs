@@ -28,6 +28,6 @@ namespace InternetShopTechnic.model
 
     public enum Status
     {
-        processing, assembled, delivered
+        обробка, зібрано, доставлено
     }
 }
