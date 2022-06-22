@@ -9,10 +9,10 @@
     <Grid>
         <Button Content="Закрити" HorizontalAlignment="Left" Margin="15,272,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_Close" Cursor="Hand" />
         <Button x:Name="buttonTovar" Content="Додати" HorizontalAlignment="Left" Margin="325,272,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_AddTovar" Cursor="Hand"/>
-        <TextBox x:Name="texBoxName" HorizontalAlignment="Left" Margin="110,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="box"  TextChanged="texBoxName_TextChanged"/>
-        <TextBox x:Name="texBoxPrice" HorizontalAlignment="Left" Margin="110,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="box"  TextChanged="texBoxPrice_TextChanged"/>
-        <TextBox x:Name="texBoxProduced" HorizontalAlignment="Left" Margin="110,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="box" Cursor="Arrow" TextChanged="texBoxProduced_TextChanged"/>
-        <TextBox x:Name="texBoxAddress" HorizontalAlignment="Left" Margin="110,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Tag="box" Height="25" Cursor="Arrow" TextChanged="texBoxAddress_TextChanged"/>
+        <TextBox MaxLength="15" x:Name="texBoxName" HorizontalAlignment="Left" Margin="110,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="boxTovar"  TextChanged="texBoxName_TextChanged" Cursor="Arrow"/>
+        <TextBox MaxLength="10" x:Name="texBoxPrice" HorizontalAlignment="Left" Margin="110,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="boxTovar"  TextChanged="texBoxPrice_TextChanged" Cursor="Arrow"/>
+        <TextBox MaxLength="15" x:Name="texBoxProduced" HorizontalAlignment="Left" Margin="110,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" Tag="boxTovar" Cursor="Arrow" TextChanged="texBoxProduced_TextChanged"/>
+        <TextBox MaxLength="20" x:Name="texBoxAddress" HorizontalAlignment="Left" Margin="110,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Tag="boxTovar" Height="25" Cursor="Arrow" TextChanged="texBoxAddress_TextChanged"/>
         <Label Content="Назва" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Height="26"/>
         <Label Content="Категорія" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Height="26"/>
         <Label Content="Ціна" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Height="26"/>
@@ -21,11 +21,11 @@
         <Label Content="Кількість" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top"/>
         <Label Content="Характеристики" HorizontalAlignment="Left" Margin="9,203,0,0" VerticalAlignment="Top" Height="26"/>
 
-        <TextBox x:Name="texBoxValue1" HorizontalAlignment="Left" Margin="110,200,0,0" TextWrapping="Wrap" Height="25" VerticalAlignment="Top" Width="80" Tag="box" Cursor="Arrow" TextChanged="texBoxValue1_TextChanged"/>
-        <TextBox x:Name="texBoxValue2" HorizontalAlignment="Center" Margin="0,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="box" TextChanged="texBoxValue2_TextChanged"/>
-        <TextBox x:Name="texBoxValue3" HorizontalAlignment="Left" Margin="293,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="box" TextChanged="texBoxValue3_TextChanged"/>
-        <TextBox x:Name="texBoxValue4" HorizontalAlignment="Left" Margin="385,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="box" TextChanged="texBoxValue4_TextChanged"/>
-        <TextBox x:Name="texBoxNumber" HorizontalAlignment="Left" Margin="110,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Tag="box" TextChanged="texBoxNumber_TextChanged" Cursor="Arrow"/>
+        <TextBox MaxLength="13" x:Name="texBoxValue1" HorizontalAlignment="Left" Margin="110,200,0,0" TextWrapping="Wrap" Height="25" VerticalAlignment="Top" Width="80" Tag="boxTovar" Cursor="Arrow" TextChanged="texBoxValue1_TextChanged"/>
+        <TextBox MaxLength="4" x:Name="texBoxValue2" HorizontalAlignment="Center" Margin="0,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="boxTovar" TextChanged="texBoxValue2_TextChanged" Cursor="Arrow"/>
+        <TextBox MaxLength="4" x:Name="texBoxValue3" HorizontalAlignment="Left" Margin="293,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="boxTovar" TextChanged="texBoxValue3_TextChanged" Cursor="Arrow"/>
+        <TextBox MaxLength="9" x:Name="texBoxValue4" HorizontalAlignment="Left" Margin="385,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Tag="boxTovar" TextChanged="texBoxValue4_TextChanged" Cursor="Arrow"/>
+        <TextBox MaxLength="2" x:Name="texBoxNumber" HorizontalAlignment="Left" Margin="110,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Tag="boxTovar" TextChanged="texBoxNumber_TextChanged" Cursor="Arrow"/>
         <ComboBox x:Name="ComboBoxCategory" HorizontalAlignment="Left" Margin="110,54,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectionChanged="ComboBoxCategory_SelectionChanged"/>
         <Label x:Name="LableHeader" Content="Додавання товару" HorizontalAlignment="Left" Margin="166,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
         <Label x:Name="lable1" Content="" HorizontalAlignment="Left" Margin="110,175,0,0" VerticalAlignment="Top" Width="80"/>

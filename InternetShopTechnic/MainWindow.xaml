@@ -23,6 +23,7 @@
             <TabItem Header="Товар" Height="50" Width="150">
                 <Grid Background="#FFE5E5E5">
                     <ListView Name="tovarList"  Margin="150,0,0,0" SelectionChanged="tovarList_SelectionChanged" FontFamily="Arial" FontSize="16" FontWeight="Normal"  Background="White">
+                        
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Назва</GridViewColumn>
@@ -83,8 +84,21 @@
                     </ListView>
                     <Button Content="Додати" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Add"/>
                     <Button Content="Видалити" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Remove"/>
-                    <Button Content="Редагувати" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Edit"/>
-                    <Button HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="130" Height="70" Click="Button_Click_Check" >
+                    <Button Content="Редагувати" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Width="130" Height="28" Click="Button_Click_Edit" Cursor="Hand">
+                        <Button.ToolTip>
+                            <ToolTip Background="AliceBlue">
+                                <StackPanel  Width="150" >
+                                    <StackPanel Width="175" Orientation="Horizontal" Background="Transparent">
+                                        <Image Height="30" Source="Images/edit.png" Stretch="Fill" ></Image>
+                                        <Label Content="Редагувати" Margin="5" FontSize="20" FontWeight="Bold"></Label>
+                                    </StackPanel>
+                                      <Line Stroke="Purple" StrokeThickness="3" X2="200"></Line>
+                                    <TextBlock Margin="0,3,0,0" Foreground="Black" Text="Спочатку виберіть користувача, а потім натисніть редагувати" TextWrapping="WrapWithOverflow" FontWeight="Bold" FontStyle="Italic" FontFamily="Arial"/>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                        <Button HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="130" Height="70" Click="Button_Click_Check" >
                         <TextBlock TextWrapping="Wrap" TextAlignment="Center">Перевірка статусу замовлень</TextBlock>
                     </Button>
                 </Grid>

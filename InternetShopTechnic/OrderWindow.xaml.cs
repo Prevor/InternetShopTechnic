@@ -24,7 +24,7 @@ namespace InternetShopTechnic
 
         private void buttonToOrder_Click(object sender, RoutedEventArgs e)
         {
-            if (textBoxNumber.Text != string.Empty && textBoxAddress.Text != string.Empty && TextBoxPrice.Text != string.Empty)
+            if (tovarWindow.Validate_empty_box("boxOrder") && ComboBoxCustomer.SelectedIndex != -1)
             {
                 this.DialogResult = true;
                 this.Close();
@@ -35,11 +35,13 @@ namespace InternetShopTechnic
             }
         }
 
+        #region Validate Order
+
         private TovarWindow tovarWindow = new TovarWindow(null);
 
         private void textBoxNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            tovarWindow.validateBox(new Regex(@"^[0-9]{1,2}$"), textBoxNumber, textBoxNumber.Text, buttonToOrder);
+            tovarWindow.validateBox(new Regex(@"^[1-9]{1,2}$"), textBoxNumber, textBoxNumber.Text, buttonToOrder);
         }
 
         private void TextBoxPrice_TextChanged(object sender, TextChangedEventArgs e)
@@ -49,7 +51,7 @@ namespace InternetShopTechnic
 
         private void textBoxAddress_TextChanged(object sender, TextChangedEventArgs e)
         {
-            tovarWindow.validateBox(new Regex(@"^[A-Z /W a-z]{2,20}$"), textBoxAddress, textBoxAddress.Text, buttonToOrder);
+            tovarWindow.validateBox(new Regex(@"^[A-Z /W a-z]{2,30}$"), textBoxAddress, textBoxAddress.Text, buttonToOrder);
         }
 
         private void DateToOrder_CalendarClosed(object sender, RoutedEventArgs e)
@@ -67,11 +69,10 @@ namespace InternetShopTechnic
                 DateToOrder.BorderThickness = new Thickness(0, 0, 0, 3);
             }
         }
-
-
+        
         private void ComboBoxCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ComboBoxCustomer.SelectedItem != String.Empty)
+            if (ComboBoxCustomer.SelectedIndex != -1)
             {
                 buttonToOrder.IsEnabled = true;
                 ComboBoxCustomer.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 130, 0));
@@ -84,5 +85,9 @@ namespace InternetShopTechnic
                 ComboBoxCustomer.BorderThickness = new Thickness(0, 0, 0, 3);
             }
         }
+
+
+        #endregion
+        
     }
 }

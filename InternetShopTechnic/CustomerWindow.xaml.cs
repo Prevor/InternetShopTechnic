@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using InternetShopTechnic.model;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using InternetShopTechnic.model;
 
 namespace InternetShopTechnic
 {
@@ -26,7 +17,7 @@ namespace InternetShopTechnic
             InitializeComponent();
 
             this.customer = item;
-            
+
             if (customer != null)
             {
                 textBoxName.Text = customer.Name;
@@ -38,7 +29,7 @@ namespace InternetShopTechnic
                 LableHeader.Content = "Редагування користувача";
             }
         }
-        
+
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -46,7 +37,7 @@ namespace InternetShopTechnic
 
         private void Button_Click_AddCustomer(object sender, RoutedEventArgs e)
         {
-            if (textBoxName.Text != String.Empty && textBoxAddress.Text != String.Empty && textBoxPhone.Text != String.Empty && textBoxEmail.Text != String.Empty)
+            if (tovarWindow.Validate_empty_box("boxCustomer"))
             {
                 this.customer.Name = textBoxName.Text;
                 this.customer.Address = textBoxAddress.Text;
@@ -59,8 +50,9 @@ namespace InternetShopTechnic
             {
                 MessageBox.Show("Поля порожні!");
             }
-            
         }
+
+        #region Validate Customer
 
         private TovarWindow tovarWindow = new TovarWindow(null);
 
@@ -83,5 +75,8 @@ namespace InternetShopTechnic
         {
             tovarWindow.validateBox(new Regex(@"[a-z0-9]+@[a-z\-]+\.[a-z]{2,3}"), textBoxEmail, textBoxEmail.Text, buttonCustomer);
         }
+
+        
+        #endregion
     }
 }

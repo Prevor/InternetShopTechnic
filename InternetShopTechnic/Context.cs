@@ -9,10 +9,12 @@ namespace InternetShopTechnic
 {
     public class MyAppContext : DbContext
     {
-        public DbSet<Tovar> Tovar { get; set; }
-        public DbSet<Customer> Customer { get;  set; }
-        public DbSet<Order> Orders { get;  set; }
+        // Поля для доступу в базі даних сутностей: товару, користувача, ордерів 
+        public DbSet<Tovar> Tovar { get; set; }         
+        public DbSet<Customer> Customer { get;  set; }  
+        public DbSet<Order> Orders { get;  set; }      
 
+        // Конфігурація підключення 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=TestDB;Trusted_Connection=True;");

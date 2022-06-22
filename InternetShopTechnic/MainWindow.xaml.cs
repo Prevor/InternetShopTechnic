@@ -77,7 +77,7 @@ namespace InternetShopTechnic
                        Customer = customers[new Random().Next(0, customers.Count())],
                        Status = Status.обробка,
                        Number = new Random().Next(1, 5),
-                       DateAndAddress = fakerOrder.Address.City() + ", " + ((DateTime)fakerOrder.Date.Past()).ToString("d"),
+                       DateAndAddress = fakerOrder.Address.City() + ", " + ((DateTime)fakerOrder.Date.Past()).ToString("g"),
 
                    });
                 orders.Add(
@@ -88,7 +88,7 @@ namespace InternetShopTechnic
                       Customer = customers[new Random().Next(0, customers.Count())],
                       Status = Status.доставлено,
                       Number = new Random().Next(1, 5),
-                      DateAndAddress = fakerOrder.Address.City() + ", " + ((DateTime)fakerOrder.Date.Past()).ToString("d"),
+                      DateAndAddress = fakerOrder.Address.City() + ", " + ((DateTime)fakerOrder.Date.Past()).ToString("g"),
                   });
                 orders.Add(
                   new Order
@@ -98,7 +98,7 @@ namespace InternetShopTechnic
                       Customer = customers[new Random().Next(0, customers.Count())],
                       Status = Status.зібрано,
                       Number = new Random().Next(1, 5),
-                      DateAndAddress = fakerOrder.Address.City() + ", " + ((DateTime)fakerOrder.Date.Past()).ToString("d"),
+                      DateAndAddress = fakerOrder.Address.City() + ", " + ((DateTime)fakerOrder.Date.Past()).ToString("g"),
 
                   });
             }
@@ -168,6 +168,7 @@ namespace InternetShopTechnic
                 db.Customer.Add(customerWindow.customer);
                 db.SaveChanges();
                 Show();
+                MessageBox.Show("Користувача успішно додано до списку користувачів!");
             }
         }
 
@@ -207,7 +208,6 @@ namespace InternetShopTechnic
         // Статус замовлень 
         private void Button_Click_Check(object sender, RoutedEventArgs e)
         {
-
             selCust = (Customer)customerList.SelectedItem;
 
             if (selCust != null)
@@ -325,8 +325,7 @@ namespace InternetShopTechnic
         {
             if (CheckBoxAvailable.IsChecked == true)
             {
-                var res = tovars.Where(t => t.Available == true).ToList();
-                tovarList.ItemsSource = res;
+                tovarList.ItemsSource = tovars.Where(t => t.Available == true).ToList();
                 ComboBoxCategory.IsEnabled = false;
                 ComboBoxCharacteristics.IsEnabled = false;
                 ComboBoxProducer.IsEnabled = false;
@@ -352,6 +351,7 @@ namespace InternetShopTechnic
                 db.Tovar.Add(tovarWindow.tovar);
                 db.SaveChanges();
                 tovarList.ItemsSource = db.Tovar.ToList();
+                MessageBox.Show("Товар успішно додано до списку товарів!");
             }
         }
 
@@ -500,7 +500,7 @@ namespace InternetShopTechnic
         // Вихід
         private void CloseMainWindow(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Environment.Exit(0);
         }
 
         // Мереміщення вікна

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="electric-appliance.png" />
+    <None Remove="Images\edit.png" />
     <None Remove="Images\player.png" />
     <None Remove="Images\refrigerator.png" />
     <None Remove="Images\tv.png" />
@@ -33,6 +34,7 @@
 
   <ItemGroup>
     <Resource Include="electric-appliance.png" />
+    <Resource Include="Images\edit.png" />
     <Resource Include="Images\player.png" />
     <Resource Include="Images\refrigerator.png" />
     <Resource Include="Images\tv.png" />

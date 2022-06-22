@@ -8,23 +8,23 @@
         mc:Ignorable="d"
         Title="OrderWindow" Height="375" Width="325" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <DatePicker x:Name="DateToOrder" HorizontalAlignment="Left" Margin="140,235,0,0" VerticalAlignment="Top" Width="140" CalendarClosed="DateToOrder_CalendarClosed"/>
+        <DatePicker x:Name="DateToOrder" HorizontalAlignment="Left" Margin="140,235,0,0" VerticalAlignment="Top" Width="140" CalendarClosed="DateToOrder_CalendarClosed" Tag="boxOrder"/>
         <Label Content="Дата і час" HorizontalAlignment="Left" Margin="45,39,0,0" VerticalAlignment="Top"/>
         <Label Content="Клієнт" HorizontalAlignment="Left" Margin="45,68,0,0" VerticalAlignment="Top"/>
         <Label Content="" HorizontalAlignment="Left" Margin="46,104,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="DataEndTime"  IsEnabled="False" HorizontalAlignment="Left" Margin="140,40,0,0" VerticalAlignment="Top" Width="140"/>
+        <DatePicker x:Name="DataEndTime"  IsEnabled="False" HorizontalAlignment="Left" Margin="140,40,0,0" VerticalAlignment="Top" Width="140" Tag="boxOrder"/>
         <Label Content="Товар" HorizontalAlignment="Left" Margin="45,94,0,0" VerticalAlignment="Top"/>
         <Label Content="Кількість" HorizontalAlignment="Left" Margin="45,138,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxPrice" HorizontalAlignment="Left" Margin="140,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" TextChanged="TextBoxPrice_TextChanged"/>
+        <TextBox MaxLength="10" x:Name="TextBoxPrice" HorizontalAlignment="Left" Margin="140,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" TextChanged="TextBoxPrice_TextChanged" Tag="boxOrder"/>
         <Label Content="Загальна ціна" HorizontalAlignment="Left" Margin="45,168,0,0" VerticalAlignment="Top"/>
         <Label Content="Адреса" HorizontalAlignment="Left" Margin="45,199,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Margin="140,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" TextChanged="textBoxAddress_TextChanged" Cursor="Arrow"/>
+        <TextBox MaxLength="30" x:Name="textBoxAddress" HorizontalAlignment="Left" Margin="140,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" TextChanged="textBoxAddress_TextChanged" Cursor="Arrow" Tag="boxOrder"/>
         <Label Content="Дата і час &#xA;доставки" HorizontalAlignment="Left" Margin="45,224,0,0" VerticalAlignment="Top" Width="90" Height="55"/>
         <Button x:Name="buttonToOrder" Content="Оформити замовлення" HorizontalAlignment="Center" Margin="0,278,0,0" VerticalAlignment="Top" Width="185" Height="30" Cursor="Hand" Click="buttonToOrder_Click"/>
         <Button x:Name="buttonClose" Content="Закрити" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Width="185" Height="30" Click="Button_Click_Close" Cursor="Hand"/>
         <Label Content="Оформлення замовлення" HorizontalAlignment="Left" Margin="65,5,0,0" VerticalAlignment="Top" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
-        <TextBox x:Name="textBoxTovar" HorizontalAlignment="Left" Margin="140,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" IsEnabled="False"/>
-        <TextBox x:Name="textBoxNumber" HorizontalAlignment="Left" Margin="140,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.545,0.559" TextChanged="textBoxNumber_TextChanged"/>
-        <ComboBox x:Name="ComboBoxCustomer" HorizontalAlignment="Left" Margin="140,72,0,0" VerticalAlignment="Top" Width="140" SelectionChanged="ComboBoxCustomer_SelectionChanged"/>
+        <TextBox x:Name="textBoxTovar" HorizontalAlignment="Left" Margin="140,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" IsEnabled="False" Tag="boxOrder"/>
+        <TextBox MaxLength="2" x:Name="textBoxNumber" HorizontalAlignment="Left" Margin="140,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.545,0.559" TextChanged="textBoxNumber_TextChanged" Tag="boxOrder"/>
+        <ComboBox x:Name="ComboBoxCustomer" HorizontalAlignment="Left" Margin="140,72,0,0" VerticalAlignment="Top" Width="140" SelectionChanged="ComboBoxCustomer_SelectionChanged" Tag="boxOrder"/>
     </Grid>
 </Window>

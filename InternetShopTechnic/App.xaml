@@ -17,6 +17,7 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
+         
         </ResourceDictionary>
     </Application.Resources>
     

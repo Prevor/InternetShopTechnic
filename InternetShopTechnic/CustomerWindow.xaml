@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="CustomerWindow" Height="345" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Margin="30,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="25" Cursor="Arrow" TextChanged="textBoxName_TextChanged"/>
-        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Margin="30,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="25" TextChanged="textBoxAddress_TextChanged"/>
-        <TextBox x:Name="textBoxPhone" HorizontalAlignment="Left" Margin="30,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="25" TextChanged="textBoxPhone_TextChanged"/>
-        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Left" Margin="30,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" TextChanged="textBoxEmail_TextChanged"/>
+        <TextBox MaxLength="30" x:Name="textBoxName" HorizontalAlignment="Left" Margin="30,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="25" Cursor="Arrow" TextChanged="textBoxName_TextChanged" Tag="boxCustomer"/>
+        <TextBox MaxLength="30" x:Name="textBoxAddress" HorizontalAlignment="Left" Margin="30,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="25" TextChanged="textBoxAddress_TextChanged" Tag="boxCustomer"/>
+        <TextBox MaxLength="13" x:Name="textBoxPhone" HorizontalAlignment="Left" Margin="30,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Height="25" TextChanged="textBoxPhone_TextChanged" Tag="boxCustomer"/>
+        <TextBox MaxLength="30" x:Name="textBoxEmail" HorizontalAlignment="Left" Margin="30,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" TextChanged="textBoxEmail_TextChanged" Tag="boxCustomer" Height="24"/>
         <Label Content="Прізвище та ім'я" HorizontalAlignment="Left" Margin="55,55,0,0" VerticalAlignment="Top" Width="105" Height="25"/>
         <Label Content="Адреса" HorizontalAlignment="Left" Margin="83,114,0,0" VerticalAlignment="Top" Height="25"/>
         <Label Content="Телефон" HorizontalAlignment="Left" Margin="79,171,0,0" VerticalAlignment="Top" Height="25"/>
